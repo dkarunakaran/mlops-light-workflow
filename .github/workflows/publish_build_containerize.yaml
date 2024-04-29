@@ -53,9 +53,8 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
       with:
-        cache_from: []
-        #context: .
-        #push: true
+        # context: .
+        # push: true
         tags: flask_actions_cloud_build_gke_app:latest
     
     
