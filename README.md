@@ -30,7 +30,7 @@ lint:
 all: install lint test
 ```
 
-Then we can execute each of the commands in Github actions yaml file as follows
+Then we can add each of the commands in Github actions yaml file as follows
 
 ```
 - name: Install dependencies
@@ -47,7 +47,7 @@ Then we can execute each of the commands in Github actions yaml file as follows
     make format
 
 ```
-
+These will be executed whenever we pushed the code to GitHub.
 
 ## Build as a container and push to container registry
 
