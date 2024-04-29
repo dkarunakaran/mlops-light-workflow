@@ -11,7 +11,7 @@ Code pushed to Github -> CI -> build contianer-> Google's container registry-> C
 
 This is done in github Actions. The config stored stored in .github/workflows/publish_build_containerize.yaml
 
-We define following content in Makefile to install, lint, and test
+We define the following content in Makefile to install, lint, and test
 
 ```
 install:
@@ -28,6 +28,24 @@ lint:
 	pylint --disable=R,C app.py 
 
 all: install lint test
+```
+
+Then we can execute each of the commands in Github actions yaml file as follows
+
+```
+- name: Install dependencies
+  run: |
+    make install
+- name: Lint with pylint
+  run: |
+    make lint
+- name: Test with pytest
+  run: |
+    make test
+- name: Format code
+  run: |
+    make format
+
 ```
 
 
