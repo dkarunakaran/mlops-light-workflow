@@ -40,12 +40,6 @@ jobs:
         project_id: ${{ env.PROJECT_ID }} #parse the value of env called PROJECT_ID
         export_default_credentials: true
 
-    #- name: Build Docker Image
-    #  env:
-    #    IMAGE_NAME: mlops_flask_actions_gke #create env called IMAGE_NAME consisted of actual name of Docker Image after we build
-    #    PROJECT_ID: t-isotope-421803
-    #  run: docker build -t $IMAGE_NAME:latest . #build the docker image
-
     - name: Configure Docker Client
       run:  |-
         gcloud auth configure-docker --quiet #authenticate to gcr
@@ -56,15 +50,5 @@ jobs:
         push: true
         tags: flask_actions_cloud_build_gke_app:latest
     
-    
-        
-    #- name: Push Docker Image to Container Registry GCR
-    #  env: 
-    #    IMAGE_NAME: mlops_flask_actions_gke
-    #    PROJECT_ID: t-isotope-421803
-    #    #tag docker image to gcr image format then push to gcr
-    #  run: |-
-    #    docker tag $IMAGE_NAME:latest gcr.io/$PROJECT_ID/$IMAGE_NAME:latest 
-    #    docker push gcr.io/$PROJECT_ID/$IMAGE_NAME:latest 
 
 
