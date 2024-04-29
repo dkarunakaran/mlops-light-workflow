@@ -1,6 +1,6 @@
 
 
-* Project oveview
+*Project oveview
 
 This project is to demostrate a workflow what "Practical MLOPs" book called MLOPS light workflow
 
