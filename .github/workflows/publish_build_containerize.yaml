@@ -31,21 +31,14 @@ jobs:
       packages: write
 
     steps:
-      - name: Login to Google Cloud (using Service Account)
-        uses: GoogleCloudPlatform/github-actions/setup-gcloud@master
-        with:
-          service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }}
-          project_id: t-isotope-421803 
-          export_default_credentials: true
-    
-    #- name: Login to GCR
-    #  env:
-    #    PROJECT_ID: t-isotope-421803 #create env called PROJECT_ID consisted of our actual GCP Project ID
-    #  uses: google-github-actions/setup-gcloud@v0.3.0 #checkouts GCR repo, so this workflow can access it
-    #  with:
-    #    service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }} #parse the value of repository secret called SERVICE_ACCOUNT_KEY that we have created earlier
-    #    project_id: ${{ env.PROJECT_ID }} #parse the value of env called PROJECT_ID
-    #    export_default_credentials: true
+    - name: Login to GCR
+      env:
+        PROJECT_ID: t-isotope-421803 #create env called PROJECT_ID consisted of our actual GCP Project ID
+      uses: google-github-actions/setup-gcloud@v0.3.0 #checkouts GCR repo, so this workflow can access it
+      with:
+        service_account_key: ${{ secrets.SERVICE_ACCOUNT_KEY }} #parse the value of repository secret called SERVICE_ACCOUNT_KEY that we have created earlier
+        project_id: ${{ env.PROJECT_ID }} #parse the value of env called PROJECT_ID
+        export_default_credentials: true
 
     #- name: Build Docker Image
     #  env:
@@ -53,15 +46,15 @@ jobs:
     #    PROJECT_ID: t-isotope-421803
     #  run: docker build -t $IMAGE_NAME:latest . #build the docker image
 
-    #- name: Configure Docker Client
-    #  run:  |-
-    #    gcloud auth configure-docker --quiet #authenticate to gcr
+    - name: Configure Docker Client
+      run:  |-
+        gcloud auth configure-docker --quiet #authenticate to gcr
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v4
-        with:
-          push: true
-          tags: flask_actions_cloud_build_gke_app:latest
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
+      with:
+        push: true
+        tags: flask_actions_cloud_build_gke_app:latest
     
     
         
