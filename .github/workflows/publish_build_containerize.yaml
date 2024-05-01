@@ -40,14 +40,15 @@ jobs:
         workload_identity_provider: 'projects/891346628012/locations/global/workloadIdentityPools/actions/providers/github'
         service_account: 'user1-383@t-isotope-421803.iam.gserviceaccount.com'
         
-    - name: Build Docker Image
-      env:
-        IMAGE_NAME: flask_app #create env called IMAGE_NAME consisted of actual name of Docker Image after we build
-      run: docker build -t $IMAGE_NAME:latest . #build the docker image
-        
-    - name: Configure Docker Client
-      run:  |-
-          gcloud auth configure-docker --quiet #authenticate to gcr
+    - name: 'Set up Cloud SDK'
+      uses: 'google-github-actions/setup-gcloud@v1'
+      with:
+        project_id: '${{ env.PROJECT_ID }}'
+
+
+    - name: 'Docker auth'
+      run: |-
+         gcloud auth configure-docker ${{ env.GAR_LOCATION }}-docker.pkg.dev
     
 
 
