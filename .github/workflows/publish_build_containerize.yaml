@@ -34,7 +34,8 @@ jobs:
     - uses: 'google-github-actions/auth@v2'
       with:
         project_id: 't-isotope-421803'
-        workload_identity_provider: 'projects/891346628012/locations/global/workloadIdentityPools/my-pool/subject/SUBJECT_ATTRIBUTE_VALUE'
+        workload_identity_provider: 'projects/891346628012/locations/global/workloadIdentityPools/githubactions/providers/github'
+        service_account: 'github-actions@t-isotope-421803.iam.gserviceaccount.com'
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
