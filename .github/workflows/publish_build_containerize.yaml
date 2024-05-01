@@ -31,9 +31,10 @@ jobs:
       packages: write
 
     steps:
-    - uses: 'google-github-actions/auth@v2'
+    - id: 'auth'
+      uses: 'google-github-actions/auth@v1'
       with:
-        project_id: 't-isotope-421803'
+        token_format: 'access_token'
         workload_identity_provider: 'projects/891346628012/locations/global/workloadIdentityPools/githubactions/providers/github'
         service_account: 'github-actions@t-isotope-421803.iam.gserviceaccount.com'
 
