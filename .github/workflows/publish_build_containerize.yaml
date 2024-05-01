@@ -18,7 +18,7 @@ jobs:
     - name: Lint with pylint
       run: |
         make lint
-        
+
     #- name: Test with pytest
     #  run: |
     #    make test
@@ -38,7 +38,7 @@ jobs:
       with:
         token_format: 'access_token'
         workload_identity_provider: 'projects/891346628012/locations/global/workloadIdentityPools/githubactions/providers/github'
-        service_account: 'github@t-isotope-421803.iam.gserviceaccount.com'
+        service_account: 'connector@t-isotope-421803.iam.gserviceaccount.com'
 
     #- name: Build and push Docker image
     #  uses: docker/build-push-action@v4
