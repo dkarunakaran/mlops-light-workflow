@@ -31,18 +31,10 @@ jobs:
       packages: write
 
     steps:
-    - id: 'auth'
-      name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@v0.4.0'
+    - uses: 'google-github-actions/auth@v2'
       with:
-        token_format: 'access_token'
+        project_id: 't-isotope-421803'
         workload_identity_provider: 'projects/891346628012/locations/global/workloadIdentityPools/my-pool/subject/SUBJECT_ATTRIBUTE_VALUE'
-        service_account: 'mlops-light-workflow@t-isotope-421803.iam.gserviceaccount.com'
-    
-    - name: 'Access secret'
-      run: |-
-        curl https://secretmanager.googleapis.com/v1/projects/my-project/secrets/my-secret/versions/1:access \
-          --header "Authorization: Bearer ${{ steps.auth.outputs.access_token }}"
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v4
