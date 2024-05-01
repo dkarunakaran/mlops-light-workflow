@@ -37,7 +37,7 @@ jobs:
       with:
         token_format: 'access_token'
         workload_identity_provider: 'projects/891346628012/locations/global/workloadIdentityPools/githubactions/providers/github'
-        service_account: 'github-actions@t-isotope-421803.iam.gserviceaccount.com'
+        service_account: 'github@t-isotope-421803.iam.gserviceaccount.com'
 
     #- name: Build and push Docker image
     #  uses: docker/build-push-action@v4
