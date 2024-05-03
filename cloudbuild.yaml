@@ -1,3 +1,11 @@
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'us-central1-docker.pkg.dev/t-isotope-421803/my-docker-repo/my-image', '.']
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - '-t'
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/first_repo:tag1'
+      - .
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/first_repo:tag1'
