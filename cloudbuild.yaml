@@ -3,12 +3,12 @@ steps:
     args:
       - "build"
       - "-t"
-      - "us-central1-docker.pkg.dev/t-isotope-421803/demo-docker-image/first_repo2:tag1"
+      - "us-central1-docker.pkg.dev/$PROJECT_ID/demo-docker-image/first_repo2:$COMMIT_SHA"
       - .
   - name: gcr.io/cloud-builders/docker
     args:
       - "push"
-      - "us-central1-docker.pkg.dev/t-isotope-421803/demo-docker-image/first_repo2:tag1"
+      - "us-central1-docker.pkg.dev/$PROJECT_ID/demo-docker-image/first_repo2:$COMMIT_SHA"
 
 
 
