@@ -1,8 +1,3 @@
 steps:
-  - name: 'gcr.io/cloud-builders/docker'
-    script: |
-      docker build -t us-central1-docker.pkg.dev/t-isotope-421803//quickstart-docker-repo1/quickstart-image1:tag1 .
-    automapSubstitutions: true
-  - name: 'publish'
-    script: |
-      gcloud builds submit --region=us-central1 --config cloudbuild.yaml
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'us-central1-docker.pkg.dev/t-isotope-421803/my-docker-repo/my-image', '.']
