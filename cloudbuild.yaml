@@ -1,7 +1,7 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
     script: |
-      docker build -t us-central1-docker.pkg.dev/t-isotope-421803//quickstart-docker-repo/quickstart-image:tag2 .
+      docker build -t us-central1-docker.pkg.dev/t-isotope-421803//quickstart-docker-repo1/quickstart-image1:tag1 .
     automapSubstitutions: true
   - name: 'publish'
     script: |
