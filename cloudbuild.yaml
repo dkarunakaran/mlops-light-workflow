@@ -1,30 +1,27 @@
 steps:
   - name: gcr.io/cloud-builders/docker
     args:
-      - "build"
-      - "-t"
-      - "us-central1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/first_repo2:$COMMIT_SHA"
+      - build
+      - '-t'
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:$COMMIT_SHA'
       - .
   - name: gcr.io/cloud-builders/docker
     args:
-      - "push"
-      - "us-central1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/first_repo2:$COMMIT_SHA"
-
+      - push
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:$COMMIT_SHA'
   - name: gcr.io/google.com/cloudsdktool/cloud-sdk
     args:
-      - "run"
-      - "deploy"
-      - "first-repo2"  #cloud run SERVICE_NAME
-      - "--image"
-      - "us-central1-docker.pkg.dev/$PROJECT_ID/cloud-run-source-deploy/first_repo2:$COMMIT_SHA"
+      - run
+      - deploy
+      - $_SERVICE_NAME
+      - '--image'
+      - '$_AR_HOSTNAME/$PROJECT_ID/$_AR_REPO/$_SERVICE_NAME:$COMMIT_SHA'
       - '--region'
-      - "us-central1"
+      - $_DEPLOY_REGION
       - '--platform'
-      - "managed"
+      - $_PLATFORM
     entrypoint: gcloud
 timeout: 1200s
-
-
 
 
 
