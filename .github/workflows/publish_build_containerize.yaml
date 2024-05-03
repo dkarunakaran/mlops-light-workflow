@@ -49,6 +49,11 @@ jobs:
     - name: 'Docker auth'
       run: |-
          gcloud auth configure-docker --quiet 
-    
+
+    # After successful CI steps
+    - uses: google/cloudbuild/action@v1
+      with:
+        # Path to your cloudbuild.yaml file
+        cloudbuild_config: path/to/cloudbuild.yaml
 
 
