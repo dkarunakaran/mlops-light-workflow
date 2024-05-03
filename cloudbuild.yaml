@@ -10,7 +10,19 @@ steps:
       - "push"
       - "us-central1-docker.pkg.dev/$PROJECT_ID/demo-docker-image/first_repo2:$COMMIT_SHA"
 
-
+  - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+    args:
+      - "run"
+      - "deploy"
+      - "first-repo2"  #cloud run SERVICE_NAME
+      - "--image"
+      - "us-central1-docker.pkg.dev/$PROJECT_ID/demo-docker-image/first_repo2:$COMMIT_SHA"
+      - '--region'
+      - "us-central1"
+      - '--platform'
+      - "managed"
+    entrypoint: gcloud
+timeout: 1200s
 
 
 
