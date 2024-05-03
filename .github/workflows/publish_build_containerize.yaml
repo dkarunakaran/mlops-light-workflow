@@ -25,34 +25,29 @@ jobs:
     #- name: Format code
     #  run: |
     #    make format
-  deploy:
-    runs-on: ubuntu-latest #run this workflow on ubuntu instance
-    permissions: #make sure we add permission to read and write package
-      contents: 'read'
-      id-token: 'write'
+#  deploy:
+#    runs-on: ubuntu-latest #run this workflow on ubuntu instance
+#    permissions: #make sure we add permission to read and write package
+#      contents: 'read'
+#     id-token: 'write'
+#
+#    steps:
+#    - id: 'auth'
+#      name: 'Authenticate to Google Cloud'
+#      uses: 'google-github-actions/auth@v2'
+#      with:
+#        token_format: 'access_token'
+#        workload_identity_provider: 'projects/891346628012/locations/global/workloadIdentityPools/actions/providers/github'
+#        service_account: 'user1-383@t-isotope-421803.iam.gserviceaccount.com'
+#        
+#    - name: 'Set up Cloud SDK'
+#      uses: 'google-github-actions/setup-gcloud@v1'
+#      with:
+#        project_id: '${{ env.PROJECT_ID }}'
 
-    steps:
-    - id: 'auth'
-      name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@v2'
-      with:
-        token_format: 'access_token'
-        workload_identity_provider: 'projects/891346628012/locations/global/workloadIdentityPools/actions/providers/github'
-        service_account: 'user1-383@t-isotope-421803.iam.gserviceaccount.com'
-        
-    - name: 'Set up Cloud SDK'
-      uses: 'google-github-actions/setup-gcloud@v1'
-      with:
-        project_id: '${{ env.PROJECT_ID }}'
-
-
-    - name: 'Docker auth'
-      run: |-
-         gcloud auth configure-docker --quiet 
-
-    - name: 'Set up Cloud SDK'
-      uses: 'google-github-actions/setup-gcloud@v1'
-      with:
-        version: '>= 363.0.0'
+#    - name: 'Set up Cloud SDK'
+#      uses: 'google-github-actions/setup-gcloud@v1'
+#      with:
+#        version: '>= 363.0.0'
 
 
