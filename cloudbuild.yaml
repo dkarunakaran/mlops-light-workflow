@@ -3,8 +3,6 @@ steps:
     script: |
       docker build -t us-central1-docker.pkg.dev/t-isotope-421803//quickstart-docker-repo/quickstart-image:tag1 .
     automapSubstitutions: true
-  images:
-    - 'us-central1-docker.pkg.dev/t-isotope-421803//quickstart-docker-repo/quickstart-image:tag1'
   - name: 'publish'
     script: |
       gcloud builds submit --region=us-central1 --config cloudbuild.yaml
