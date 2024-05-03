@@ -1,13 +1,13 @@
 steps:
   - name: gcr.io/cloud-builders/docker
     args:
-      - build
+      - "build"
       - "-t"
       - "us-central1-docker.pkg.dev/t-isotope-421803demo-docker-image/first_repo1:tag1"
       - .
   - name: gcr.io/cloud-builders/docker
     args:
-      - push
+      - "push"
       - "us-central1-docker.pkg.dev/t-isotope-421803/demo-docker-image/first_repo1:tag1"
 
 
