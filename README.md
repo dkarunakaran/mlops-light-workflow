@@ -4,7 +4,7 @@
 
 This project is to demostrate a workflow what "Practical MLOPs" book called MLOPS light workflow
 
-Code pushed to Github -> CI -> build contianer-> Google's container registry-> CD -> GKE
+Code pushed to Github -> CI -> cloud build(GCP)-> build contianer-> Google's container registry-> CD -> cloud run
 
 
 ## Continous Integration (CI)
