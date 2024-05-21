@@ -51,7 +51,7 @@ These will be executed whenever we pushed the code to GitHub.
 
 ## Build as a container and push to container registry
 
-This is done in Github actions here, but ideally if the container registry provided by gloud provider, then use their build server for containerization and pushing to registry. The config stored stored in .github/workflows/publish_build_containerize.yaml
+This is done in GCP using cloud build.
 
 ## Continous Deployment (CD)
 
