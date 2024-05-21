@@ -9,7 +9,7 @@ Code pushed to Github -> CI -> cloud build(GCP)-> build contianer-> Google's con
 
 ## Continous Integration (CI)
 
-This is done in github Actions. The config stored stored in .github/workflows/publish_build_containerize.yaml
+This is done in github Actions. The config stored in .github/workflows/publish_build_containerize.yaml
 
 We define the following content in Makefile to install, lint, and test
 
